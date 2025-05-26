@@ -1,0 +1,11 @@
+class Solution:
+    def palindromePairs(self, words: List[str]) -> List[List[int]]:
+       result=[]
+       for i , word1 in enumerate(words):
+            for j, word2 in enumerate(words):
+                if i != j:
+                    comp=word1 + word2 
+                    if comp == comp[::-1]:
+                        result.append([i,j])
+       return result
+        
