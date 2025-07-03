@@ -1,0 +1,17 @@
+class Solution:
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        wordset=set(wordDict)
+        memo={}
+        def can_break(start:int)->bool:
+            if start==len(s):
+                return True
+            if start in memo:
+                return memo[start]
+            for e in range(start +1,len(s)+1):
+                if s[start:e] in wordset and can_break(e):
+                    memo[start]=True
+                    return True
+            memo[start]=False
+            return False
+        return can_break(0)
+        
